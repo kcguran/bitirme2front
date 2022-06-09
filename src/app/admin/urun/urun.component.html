@@ -1,0 +1,74 @@
+<div class="modal fade" id="urunModal" tabIndex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form #f="ngForm" (ngSubmit)="f.form.valid && saveUrunler()">
+  
+          <div class="modal-header">
+            <h5 class="modal-title">Ürün Detayları</h5>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+  
+          <div class="modal-body">
+  
+            <div class="alert alert-danger" *ngIf="errorMessage">
+              <strong>HATA!</strong> {{errorMessage}}
+            </div>
+  
+            <div class="form-group">
+              <label for="title">Ürün Adı</label>
+              <input
+                type="text"
+                id="urunadi"
+                name="urunadi"
+                class="form-control"
+                [(ngModel)]="urunler.urunadi"
+                #title="ngModel"
+                required
+              />
+              <div class="alert-danger" *ngIf="f.submitted && !title.valid">
+                Urun İsmi Zorunludur.
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <label for="price">Price</label>
+              <input
+                type="number"
+                id="price"
+                name="price"
+                class="form-control"
+                [(ngModel)]="urunler.urunfiyati"
+                #price="ngModel"
+                required
+              />
+              <div class="alert-danger" *ngIf="f.submitted">
+              </div>
+            </div>
+  
+  
+            <div class="form-group">
+              <label for="description">Ürün Satıcı</label>
+              <textarea
+                id="description"
+                name="textarea"
+                class="form-control"
+                [(ngModel)]="urunler.urunsatici"
+                #description="ngModel"
+                required
+              ></textarea>
+              <div class="alert-danger" *ngIf="f.submitted && !description.valid">
+                Satıcı Zorunludur.
+              </div>
+            </div>
+  
+          </div>
+  
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+            <button class="btn btn-primary" type="submit">Değişikliği Kaydet</button>
+          </div>
+  
+        </form>
+      </div>
+    </div>
+  </div>
